@@ -1,0 +1,34 @@
+@(myUrlForm: Form[UrlModel], message:String)
+
+
+  @main(Messages("index.title")) {
+  <h2>@Messages("index.h2")</h2>
+
+<!-- https://www.playframework.com/documentation/2.2.x/ScalaCustomFieldConstructors
+'_label -> "Custom label"
+'_id -> "idForTheTopDlElement"
+'_help -> "Custom help"
+'_showConstraints -> false
+'_error -> "Force an error"
+'_showErrors -> false
+
+
+https://www.playframework.com/documentation/2.0/ScalaFormHelpers
+-->
+
+  @helper.form(action = routes.Application.submit()) {
+    <fieldset>
+      <legend>
+        Please enter a url
+      </legend>
+      @helper.inputText(myUrlForm("url"), '_label -> "The Url Field")
+    </fieldset>
+    <p><input type="submit" class="btn primary"
+        value='@Messages("index.button.message")'></p>
+  }
+
+  Top of Body in index.scala.html<br>
+  @Html(message)<br>
+  End of Body in index.scala.html<br>
+}
+

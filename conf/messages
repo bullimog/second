@@ -1,0 +1,7 @@
+#The Constraints trait defines all the default form messages, that can be overridden
+constraint.required=This field must provided :)
+error.required=Error, this field must be populated
+
+index.button.message=Submit
+index.title=Form Building 101
+index.h2=Mucking about with forms
