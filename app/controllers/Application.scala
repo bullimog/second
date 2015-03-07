@@ -1,15 +1,10 @@
 package controllers
 
 import models.UrlModel
-import play.api._
-import play.api.data.Form
-import play.api.data.Forms._
 import play.api.libs.json.JsValue
-import play.api.libs.ws.ning.NingWSResponse
 import play.api.mvc._
 import play.mvc.Http.Response
 import scala.concurrent.{Future, ExecutionContext}
-import play.twirl.api.Html
 import play.api.libs.ws.{WS, WSRequestHolder, WSResponse}
 import forms.UrlForms.urlForm
 
