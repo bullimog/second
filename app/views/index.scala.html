@@ -21,7 +21,10 @@ https://www.playframework.com/documentation/2.0/ScalaFormHelpers
       <legend>
         Please enter a url
       </legend>
+      @helper.inputText(myUrlForm("protocol"), '_label -> "The Protocol Field", 'size -> 7)
       @helper.inputText(myUrlForm("url"), '_label -> "The Url Field", 'size -> 60)
+      @helper.checkbox(myUrlForm("overrideProtocol"), '_label -> "Override Protocol")
+
     </fieldset>
     <p><input type="submit" class="btn primary"
         value='@Messages("index.button.message")'></p>
