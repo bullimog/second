@@ -17,30 +17,29 @@ object UrlForms {
   val urlForm = Form(
     mapping(
       "url" -> nonEmptyText,
-      "protocol" -> text,
-      "overrideProtocol" -> of(validateCheckboxAgainstText("protocol","error.protocol.not.populated"))
+      "protocol" -> of(validateTextAgainstCheckbox("overrideProtocol","error.protocol.not.populated")),
+      "overrideProtocol" -> boolean
     )(UrlModel.apply)(UrlModel.unapply)
   )
 
 
-
   //This method is quite generic, so could be moved into a separate validation object
-  def validateCheckboxAgainstText(inputBox:String, error:String) = new Formatter[Boolean] {
+  def validateTextAgainstCheckbox(checkBoxKey:String, errorMessageKey:String) = new Formatter[String] {
 
-    override def bind(key: String, data: Map[String, String]): Either[Seq[FormError], Boolean]= {
-        val checkBox = data.getOrElse(key, "")
-        val inputBoxValue = data.getOrElse(inputBox, "")
+    override def bind(inputBoxKey: String, formDataMap: Map[String, String]): Either[Seq[FormError], String]= {
+      val inputBoxValue = formDataMap.getOrElse(inputBoxKey, "")
+      val checkBoxValue = formDataMap.getOrElse(checkBoxKey, "")
 
-        //returning an Either[Seq[FormError], Boolean] (by convention: left=bad, right=good)
-        checkBox match {
-          case "true" if inputBoxValue == "" => Left(List(FormError(key, Messages(error))))
-          case "" => Right(false)              // if its empty, assume its false
-          case _  => Right(checkBox.toBoolean) // otherwise bind boolean value of the checkbox
-        }
+      //returning an Either[Seq[FormError], String] (by convention: left=bad, right=good)
+      inputBoxValue match {
+        case "" if checkBoxValue == "true" => Left(List(FormError(inputBoxKey, Messages(errorMessageKey))))
+        case _  => Right(inputBoxValue) // otherwise bind the String value
+      }
     }
 
-    override def unbind(key: String, value: Boolean): Map[String, String] = {
+    override def unbind(key: String, value: String): Map[String, String] = {
       Map(key -> value.toString)
     }
   }
+
 }
