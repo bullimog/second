@@ -85,13 +85,13 @@ object Application extends Controller {
 
 
   def hitRouter(data: String): Future[WSResponse] = {
-    val holder : WSRequestHolder = WS.url("http://192.168.1.254/landing.lp").withQueryString("rn" -> "admin", "hidepw" -> "CP1403VFWWR")
+    val holder : WSRequestHolder = WS.url("http://192.168.1.254/landing.lp").withQueryString("rn" -> "admin", "hidepw" -> "noPwd")
     holder.get()
   }
 */
 
 //  def hitRouter(data: String)(implicit request: Request[_]): Future[WSResponse] = {
-//    val holder : WSRequestHolder = WS.url("http://192.168.1.254/landing.lp").withQueryString("rn" -> "admin", "hidepw" -> "CP1403VFWWR")
+//    val holder : WSRequestHolder = WS.url("http://192.168.1.254/landing.lp").withQueryString("rn" -> "admin", "hidepw" -> "noPwd")
 //    val complexHolder : WSRequestHolder = holder
 //    val futureResponse : Future[WSResponse] = complexHolder.get()
 //    futureResponse
@@ -100,7 +100,7 @@ object Application extends Controller {
 //  def hitRouter(data:String) = {
    // val result = Http("http://192.168.1.254/landing.lp").param("rn", "admin").param("hidepw", "CP1403VFWWR").asString
 
-//    val holder : WSRequestHolder = WS.url("http://192.168.1.254/landing.lp").withQueryString("rn" -> "admin", "hidepw" -> "CP1403VFWWR")
+//    val holder : WSRequestHolder = WS.url("http://192.168.1.254/landing.lp").withQueryString("rn" -> "admin", "hidepw" -> "NoPwd")
 //    val complexHolder : WSRequestHolder = holder//.withHeaders(...)
 //    val futureResponse : Future[WSResponse] = complexHolder.get()
     //.withTimeout(...)
