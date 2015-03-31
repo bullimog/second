@@ -1,0 +1,26 @@
+@(myUrlForm: Form[UrlModel], message:String)
+
+
+  @main(Messages("index.title")) {
+  <h2>@Messages("index.h2")</h2>
+
+
+  @helper.form(action = routes.Tester2.submit()) {
+    <fieldset>
+      <legend>
+        Please enter a url
+      </legend>
+      @helper.inputText(myUrlForm("protocol"), '_label -> "The Protocol Field", 'size -> 7)
+      @helper.inputText(myUrlForm("url"), '_label -> "The Url Field", 'size -> 60)
+      @helper.checkbox(myUrlForm("overrideProtocol"), '_label -> "Override Protocol")
+
+    </fieldset>
+    <p><input type="submit" class="btn primary"
+        value='@Messages("index.button.message")'></p>
+  }
+
+  Top of Body in index.scala.html<br>
+  @Html(message)<br>
+  End of Body in index.scala.html<br>
+}
+
