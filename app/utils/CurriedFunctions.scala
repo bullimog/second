@@ -63,6 +63,8 @@ NEW FUNCTIONS THAT ARE MORE SPECIALIZED
   val add99 = add_v2(99)
   assert( add99(1) == 100 )
 
+
+  // Reusing a Curried Fn....
   val add1000 = add_v3(1000) _ // please note the underscore, explanation below ↓
   assert( add1000(100) == 1100 )
 
@@ -71,7 +73,7 @@ NEW FUNCTIONS THAT ARE MORE SPECIALIZED
 
 
   /**********************************************************************
-CONVERTING A REGULAR (UNCARRIED) FUNCTIONS TO A CURRIED FUNCTION
+CONVERTING A REGULAR (UNCURRIED) FUNCTIONS TO A CURRIED FUNCTION
     **********************************************************************/
 
   // if we have a regular functions, we can convert it to curried function like this:
@@ -83,6 +85,10 @@ CONVERTING A REGULAR (UNCARRIED) FUNCTIONS TO A CURRIED FUNCTION
   sum2(1)(2)
   // and both will give the same result when called with 2 parameters
   assert( sum(1,2) == sum2(1)(2))
+
+  val add10UsingSum2 = sum2(10)(_)
+  assert(add10UsingSum2(100) == 110)
+
   /****************************************/
 
 
