@@ -9,12 +9,12 @@ import utils.Lucky
 
   "Lucky" should {
 
-    "extract correct the correct digit from an Integer " in {
+    "extract the correct digit from an Integer " in {
       val result = Lucky.extractDigit(1234, 2)
       result must equalTo(2)
     }
 
-    "extract correct the correct digit from an Integer " in {
+    "extract the correct digit from an Integer " in {
       val result = Lucky.extractDigit(7654321, 2)
       result must equalTo(3)
     }
@@ -31,7 +31,7 @@ import utils.Lucky
     }
 
 
-    "again extract correct the correct digit from an Integer " in {
+    "again extract the correct digit from an Integer " in {
       val result = Lucky.colVal(632423478, 5)
       result must equalTo(2)
     }

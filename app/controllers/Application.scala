@@ -1,5 +1,5 @@
 package controllers
-
+import models.UrlModel
 import models.UrlModel
 import play.api.libs.json.JsValue
 import play.api.mvc._

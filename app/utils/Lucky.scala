@@ -1,12 +1,33 @@
 package utils
 
+
 import scala.math.pow
+
+
+trait flying {
+  var available: Option[Boolean] = None
+}
+
+object fuck extends flying{
+  def give(subject: String): Option[Boolean] ={
+    subject match {
+      case "Royal Baby" => None
+      case "Something that actually matters" => Some(true)
+      case _ => Some(false)
+    }
+  }
+}
+
+
+
+
 
 object Lucky {
 
   val colVal = (myInt: Int, col: Int) => ((myInt/pow(10,col-1)) % 10).toInt
 
   def numOfDigits(num: Int) = {
+
     @scala.annotation.tailrec
     def run(num: Int, digits: Int): Int =
       if(num > 0) run(num / 10, digits + 1)
@@ -16,6 +37,7 @@ object Lucky {
   }
 
   def zipToSingleDigit(num: Int) = {
+
     @scala.annotation.tailrec
     def sumDigits(num: Int, acc: Int, col: Int): Int =
       if(col > 0) sumDigits(num, colVal(num, col)+acc, col-1)
